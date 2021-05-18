@@ -52,7 +52,7 @@
         "import-helpers/order-imports": [
             "warn",
             {
-                "newlinesBetween": "always",
+                "newlinesBetween": "ignore",
                 "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
                 "alphabetize": { "order": "asc", "ignoreCase": true }
             }
