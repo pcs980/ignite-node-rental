@@ -1,5 +1,5 @@
-import { Category } from '../models/Category';
-import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
+import { Category } from '../../models/Category';
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 interface ICreateRequest {
   name: string;
@@ -24,4 +24,4 @@ class CreateCategoryService {
   }
 }
 
-export default CreateCategoryService;
+export { CreateCategoryService };
