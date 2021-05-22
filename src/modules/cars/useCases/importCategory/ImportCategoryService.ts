@@ -41,7 +41,6 @@ class ImportCategoryService {
 
   async execute(file: Express.Multer.File): Promise<Category[]> {
     const categories = await this.loadCategories(file);
-    console.log(categories);
     categories.map((category) => {
       const createCategoryService = new CreateCategoryService(this.repository);
       const { name, description } = category;
