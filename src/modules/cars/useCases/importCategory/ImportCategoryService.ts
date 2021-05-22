@@ -30,6 +30,7 @@ class ImportCategoryService {
         })
         .on('end', () => {
           console.log('Import ended with', categories.length, 'records');
+          fs.unlinkSync(file.path);
           resolve(categories);
         })
         .on('error', (error) => {
