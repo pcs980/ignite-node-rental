@@ -1,3 +1,6 @@
-SUV,Utilitário esportivo
-Sedan,Automóvel de três volumes
 Hatch,Carro curto
+Pickup,Veículo leve de carga
+Sedan,Veículo de três volumes
+Sport,Esportivo de alto desempenho
+SUV,Utilitário esportivo
+Truck,Veículo pesado de carga
