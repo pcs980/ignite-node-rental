@@ -4,7 +4,7 @@ import { ICategoriesRepository } from '../../repositories/interfaces/ICategories
 class ListCategoryService {
   constructor(private repository: ICategoriesRepository) {}
 
-  execute(): Category[] {
+  async execute(): Promise<Category[]> {
     return this.repository.list();
   }
 }

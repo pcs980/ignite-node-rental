@@ -9,13 +9,14 @@ interface ICreateRequest {
 class CreateCategoryService {
   constructor(private repository: ICategoriesRepository) {}
 
-  execute({ name, description }: ICreateRequest): Category {
-    const checkExists = this.repository.findByName(name);
+  async execute({ name, description }: ICreateRequest): Promise<Category> {
+    const checkExists = await this.repository.findByName(name);
+    console.log(checkExists);
     if (checkExists) {
       throw new Error('Category already exists');
     }
 
-    const category = this.repository.create({
+    const category = await this.repository.create({
       name,
       description,
     });
