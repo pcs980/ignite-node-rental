@@ -11,22 +11,19 @@ class User {
   name: string;
 
   @Column()
-  username: string;
-
-  @Column()
   password: string;
 
   @Column()
   email: string;
 
-  @Column('driver_license')
+  @Column({ name: 'driver_license' })
   driverLicense: string;
 
-  @Column('is_admin')
+  @Column({ name: 'is_admin' })
   isAdmin: boolean;
 
-  @CreateDateColumn('created_at')
-  createdAt: Date;
+  @CreateDateColumn()
+  created_at: Date;
 
   constructor() {
     if (!this.id) {
