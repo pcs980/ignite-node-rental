@@ -7,12 +7,8 @@ class AuthenticateUserController {
     const { email, password } = request.body;
     const authenticateService = container.resolve(AuthenticateUserService);
 
-    try {
-      const result = await authenticateService.execute({ email, password });
-      return response.status(200).json(result);
-    } catch (error) {
-      return response.status(500).json({ error: error.message });
-    }
+    const result = await authenticateService.execute({ email, password });
+    return response.status(200).json(result);
   }
 }
 

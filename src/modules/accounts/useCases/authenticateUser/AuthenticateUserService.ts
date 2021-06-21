@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { IUsersRepository } from "../../repositories/interfaces/IUsersRepository";
+import { AppError } from "../../../../errors/AppError";
 import { PUBLIC_KEY } from "../../../../shared/constants";
 
 interface IAuthenticateUserRequest {
@@ -28,12 +29,12 @@ class AuthenticateUserService {
   async execute({ email, password }: IAuthenticateUserRequest): Promise<IAuthenticateUserResponse> {
     const user = await this.usersRepository.findByEmail(email);
     if (!user) {
-      throw new Error('E-mail or password incorrect');
+      throw new AppError('E-mail or password incorrect', 403);
     }
 
     const isValidPassword = await compare(password, user.password);
     if (!isValidPassword) {
-      throw new Error('E-mail or password incorrect');
+      throw new AppError('E-mail or password incorrect', 403);
     }
 
     const payload = {};
