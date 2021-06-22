@@ -17,7 +17,6 @@ export async function ensureAuthenticated(request: Request, response: Response, 
   }
 
   const [, token] = auth.split(' ');
-  console.log(token);
 
   try {
     const { sub: id } = verify(token, PUBLIC_KEY) as IPayload;
@@ -28,9 +27,14 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     if (!user) {
       throw new AppError('User not found', 401);
     }
+
+    request.user = {
+      id: user.id,
+    };
   } catch (error) {
     throw new AppError('Invalid authorization', 401);
   }
+
 
   next();
 }
